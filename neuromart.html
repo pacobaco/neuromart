@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro-mining Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+</head>
+<body>
+    <h1>Neuro-mining Dashboard</h1>
+    <p>Your balance: <span id="balance">0</span> NTK</p>
+    <button id="sendTokensBtn">Send Tokens</button>
+
+    <script>
+        const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+
+        async function getBalance() {
+            const accounts = await web3.eth.getAccounts();
+            const balance = await web3.eth.getBalance(accounts[0]);
+            document.getElementById("balance").innerText = web3.utils.fromWei(balance, 'ether');
+        }
+
+        document.getElementById('sendTokensBtn').addEventListener('click', async () => {
+            const accounts = await web3.eth.getAccounts();
+            const amount = web3.utils.toWei("0.1", 'ether');  // 0.1 ETH as example
+            const tx = await web3.eth.sendTransaction({
+                from: accounts[0],
+                to: "recipient_address_here",
+                value: amount,
+            });
+            console.log(tx);
+        });
+
+        getBalance();
+    </script>
+</body>
+</html>
