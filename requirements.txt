@@ -1,0 +1,18 @@
+# Web3 and Blockchain Interaction
+web3==6.5.0  
+
+# EEG Data Processing  
+mne==1.6.1  
+numpy==1.26.4  
+scipy==1.12.0  
+
+# Web Interface  
+flask==3.0.2  
+flask-cors==4.0.0  
+
+# Smart Contract Deployment  
+eth-brownie==1.20.0  
+
+# Miscellaneous  
+requests==2.31.0  
+dotenv==1.0.1  
