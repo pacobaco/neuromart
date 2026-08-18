@@ -1,53 +1,56 @@
-Here's a README for your neuro-mining cryptocurrency proof of concept:
+# Neuro-Mining Cryptocurrency Ecosystem + NeuroSync Paywall
 
----
+This is a minimal proof of concept for a neuro-mining cryptocurrency ecosystem.
+Users earn **NeuroTokens (NTK)** from simulated EEG activity (Gamma focus / Theta relaxation).
 
-# Neuro-Mining Cryptocurrency Ecosystem
+## New Feature — v0.2 NeuroSync Paywall
 
-This is a minimal proof of concept for a neuro-mining cryptocurrency ecosystem. The system rewards users with NeuroTokens based on their EEG brainwave activity, such as focus (Gamma waves) or relaxation (Theta waves).
+The update adds a **simulated** marketplace flow that converts fiat/crypto payment values into a requested quantity of simultaneous, consented simulated EEG subjects and produces synchronized-band/phase-locking metrics.
 
-## Key Features
-- **EEG Data Collection**: Collects brainwave data (Gamma, Theta) from EEG devices.
-- **Smart Contract**: ERC-20 token (NeuroToken) deployed on Ethereum testnet.
-- **Reward System**: Users are rewarded NeuroTokens based on focus and relaxation thresholds.
-- **Blockchain Integration**: Uses `web3.py` for token transfer between users' wallets.
-- **Web Interface**: Basic HTML/JS frontend to display token balance and enable token transfers.
+> **Safety / scope:** This repository update is simulation/demo logic. It does not control, entrain, synchronize, or otherwise manipulate real human brains. A real-world system would require explicit informed consent, appropriate ethics/IRB review, privacy protections, medical-device/regulatory review where applicable, and secure handling of EEG data.
+
+### Key Features
+
+- EEG Data Collection (Gamma, Theta, Delta) — simulated or real collection can be integrated separately
+- ERC-20 NeuroToken (NTK) on an Ethereum testnet
+- Reward mining based on simulated brainwave thresholds
+- **NEW: Currency/Crypto → Simulated Synchronized Subjects**
+  - Pay with ETH, USDC, NTK, or simulated USD
+  - Request N concurrent simulated subjects on a chosen EEG band
+  - Simulated inter-subject phase synchronization (PLV)
+  - On-demand session through a demo paywall
+- Blockchain integration via `web3.py`
+- Minimal web dashboard
+
+## NeuroSync Flow
+
+1. User selects an EEG band, subject count/payment amount, and duration.
+2. The system quotes the value in USD, ETH, USDC, or NTK using mock exchange rates.
+3. Simulated subjects are allocated from a consented demo pool.
+4. The simulator generates streams around the selected target band and phase/coherence values.
+5. A live-style multi-subject result and average PLV are returned.
+6. The simulated session ends automatically.
 
 ## Requirements
-- Python 3.x
-- Web3.py library
-- Ethereum testnet (e.g., Rinkeby)
-- MetaMask or other Ethereum wallet
-- EEG device (e.g., OpenBCI, Muse) for real data
 
-## Installation & Setup
+Use the repository's existing requirements plus any dependencies already specified by the project.
 
-1. **Deploy the Smart Contract**:
-   - Use [Remix](https://remix.ethereum.org/) or [Hardhat/Truffle](https://hardhat.org/) to deploy the NeuroToken contract to Ethereum testnet (Rinkeby).
-
-2. **Install Dependencies**:
-   ```bash
-   pip install web3
-   ```
-
-3. **Connect EEG Device**:
-   - Integrate with real EEG devices (e.g., OpenBCI, Muse) using their APIs to collect brainwave data.
-
-4. **Run Blockchain Integration**:
-   - Use the provided Python scripts for sending and receiving tokens based on brainwave evaluation.
-
-5. **Frontend Setup**:
-   - Deploy the provided HTML/JS interface to allow user interactions with the blockchain and display NeuroToken balances.
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
-1. Launch the system and connect the EEG device.
-2. Monitor EEG data (Gamma and Theta waves).
-3. Receive tokens based on your focus and relaxation state.
-4. Interact with the web interface to send and receive NeuroTokens.
+
+```bash
+python neurosync_paywall.py
+```
+
+Or append `neuromart_neurosync_section.html` to the existing dashboard.
+
+## Important Implementation Note
+
+The existing blockchain integration sends native ETH rather than NTK. A production NTK payment flow would need the deployed ERC-20 contract address, ABI, wallet handling, allowance/transferFrom logic, transaction confirmation, and appropriate security controls.
 
 ## License
-This project is open-source under the MIT License.
 
----
-
-Feel free to adjust the content for your specific project requirements!
+MIT
