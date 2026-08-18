@@ -10,7 +10,42 @@
     <h1>Neuro-mining Dashboard</h1>
     <p>Your balance: <span id="balance">0</span> NTK</p>
     <button id="sendTokensBtn">Send Tokens</button>
+<hr>
+<h2>NeuroSync Paywall – Rent Synchronized Subjects</h2>
+<label>EEG Band:
+  <select id="band">
+    <option value="alpha">Alpha (8-13 Hz)</option>
+    <option value="theta">Theta (4-8 Hz)</option>
+    <option value="gamma">Gamma (30+ Hz)</option>
+    <option value="beta">Beta (13-30 Hz)</option>
+    <option value="delta">Delta (&lt;4 Hz)</option>
+  </select>
+</label><br><br>
+<label>Payment Amount: <input type="number" id="payAmount" value="0.01" step="0.001"></label>
+<label>Currency:
+  <select id="currency">
+    <option value="ETH">ETH</option>
+    <option value="USDC">USDC</option>
+    <option value="NTK">NTK</option>
+    <option value="USD">USD (simulated)</option>
+  </select>
+</label><br><br>
+<button onclick="rentSubjects()">Convert Payment → Synchronized Subjects</button>
+<pre id="syncResult"></pre>
 
+<script>
+async function rentSubjects() {
+  const band = document.getElementById("band").value;
+  const amount = parseFloat(document.getElementById("payAmount").value);
+  const currency = document.getElementById("currency").value;
+  
+  // In a real deployment this would call a Flask/ backend endpoint
+  // that runs convert_payment_to_subjects()
+  document.getElementById("syncResult").textContent = 
+    `Requesting ${amount} ${currency} → synchronized subjects on ${band} band...\n` +
+    `(Backend would return live PLV streams and subject IDs here)`;
+}
+</script>
     <script>
         const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
 
